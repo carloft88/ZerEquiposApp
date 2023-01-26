@@ -1,0 +1,123 @@
+﻿@model EPP.Models.Equipo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Equipo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="equipoID" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCompra" class="control-label"></label>
+                <input asp-for="FechaCompra" class="form-control" />
+                <span asp-validation-for="FechaCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha_fabrica" class="control-label"></label>
+                <input asp-for="Fecha_fabrica" class="form-control" />
+                <span asp-validation-for="Fecha_fabrica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoId" class="control-label"></label>
+                <select asp-for="SoId" class="form-control" asp-items="ViewBag.SoId"></select>
+                <span asp-validation-for="SoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="memoriaId" class="control-label"></label>
+                <select asp-for="memoriaId" class="form-control" asp-items="ViewBag.memoriaId"></select>
+                <span asp-validation-for="memoriaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="procesadorId" class="control-label"></label>
+                <select asp-for="procesadorId" class="form-control" asp-items="ViewBag.procesadorId"></select>
+                <span asp-validation-for="procesadorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="empleadoID" class="control-label"></label>
+                <select asp-for="empleadoID" class="form-control" asp-items="ViewBag.empleadoID"></select>
+                <span asp-validation-for="empleadoID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estado"></label>
+                <select asp-for="Estado" class="form-control">
+                    <option value="" disabled="" selected="">Selecciona el estado</option>
+                    <option value="True">Activo</option>
+                    <option value="False">Inactivo</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="activoFijo" class="control-label"></label>
+                <input asp-for="activoFijo" class="form-control" />
+                <span asp-validation-for="activoFijo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="activoFijo" class="control-label"></label>
+                <input asp-for="serial" placeholder="Digite el serial" class="form-control" />
+                <span asp-validation-for="serial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="licenciamientoId" class="control-label"></label>
+                <select asp-for="licenciamientoId" class="form-control" asp-items="ViewBag.licenciamientoId"></select>
+                <span asp-validation-for="licenciamientoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FabricanteId" class="control-label"></label>
+                <select asp-for="FabricanteId" class="form-control" asp-items="ViewBag.FabricanteId"></select>
+                <span asp-validation-for="FabricanteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CanonId" class="control-label"></label>
+                <select asp-for="CanonId" class="form-control" asp-items="ViewBag.CanonId"></select>
+                <span asp-validation-for="CanonId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+ <a type="button" class="btn btn-primary" asp-action="Index">Volver al listaado</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

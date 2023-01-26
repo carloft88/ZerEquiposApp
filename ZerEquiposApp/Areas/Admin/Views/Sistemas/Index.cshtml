@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EPP.Models.SO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    <a type="button" class="btn btn-outline-primary" asp-action="Create">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <a type="button" class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.SoId">Editar</a>
+                        <a type="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.SoId">Info</a>
+                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.SoId">Borrar</a>
+                   </div>
+        </td>
+
+          
+
+
+        </tr>
+}
+    </tbody>
+</table>

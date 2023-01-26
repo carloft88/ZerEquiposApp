@@ -1,0 +1,96 @@
+﻿@model IEnumerable<EPP.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    <a type="button" class="btn btn-outline-primary" asp-action="Create">Crear Nuevo</a>
+</p>
+<table cellspacing="0" text-align: center; id="tbl_empleados" class="display compact" style="width:100%">
+    <thead>
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa.NOmbre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo.Nombre)
+            </td>
+            <td>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <a type="button" class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.empleadoID">Editar</a>
+                        <a type="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.empleadoID">Info</a>
+                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.empleadoID">Borrar</a>
+                    </div>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //Llamar a datatable
+            $('#tbl_empleados').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+} 

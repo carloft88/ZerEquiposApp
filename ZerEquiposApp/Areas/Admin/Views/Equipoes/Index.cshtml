@@ -1,0 +1,185 @@
+﻿@model IEnumerable<EPP.Models.Equipo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <br />
+
+
+<p>
+    <a type="button" class="btn btn-outline-primary" asp-action="Create">Crear Nuevo</a>
+</p>
+
+    
+    <table cellspacing="0" text-align: center; id="tbl_equipos" class="display compact" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_fabrica)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Sistema)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Memoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Procesador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activoFijo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serial)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.licenciamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fabricante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Canon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+            </td>
+            @*<td align="center">
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_fabrica)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Sistema.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memoria.NOmbre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procesador.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.Nombre)
+            </td>
+            <td>
+                    
+                  @Html.DisplayFor(modelItem =>     item.Estado   )
+                  @*
+                    <label asp-for="Estado"></label>
+                    <select asp-for="Estado" class="form-control">
+                        <option value="" disabled="" selected="">Selecciona el estado</option>
+                        <option value="True">Activo</option>
+                        <option value="False">Inactivo</option>
+                    </select>
+                    <span asp-validation-for="Estado" class="text-danger"></span>*@
+            </td>
+
+
+
+             
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.activoFijo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serial)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.licenciamiento.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Canon.Nombre)
+            </td>
+            <td>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <a type="button" class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.equipoID">Editar</a>
+                    <a type="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.equipoID">Info</a>
+                    <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.equipoID">Borrar</a>
+                    </div>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+                
+@section Scripts{
+        <script>
+            $(document).ready(function () {
+                //Llamar a datatable
+            $('#tbl_equipos').DataTable({
+                    language: {
+                        "decimal": "",
+                        "emptyTable": "No hay información",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "lengthMenu": "Mostrar _MENU_ Entradas",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords": "Sin resultados encontrados",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Ultimo",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        }
+                    }
+                });
+            }); 
+        </script>
+} 
